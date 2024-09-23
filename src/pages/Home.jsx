@@ -140,14 +140,14 @@ function Home() {
 
       <div className="p-5 flex gap-5">
         <div className="flex flex-wrap gap-5">
-          {moviesList.map((item) => (
-            <MovieCard data={item} />
+          {moviesList.map((item, index) => (
+            <MovieCard key={index} data={item} />
           ))}
         </div>
 
         <div className="flex flex-col space-y-5">
-          {advList.map((item) => (
-            <div className="border border-gray-300">
+          {advList.map((item, index) => (
+            <div key={index} className="border border-gray-300">
               <img className="min-w-60" src={item.url} alt={item.altText} />
             </div>
           ))}
