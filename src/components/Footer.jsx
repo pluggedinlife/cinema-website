@@ -5,7 +5,7 @@ import Phone from "../icons/phone.svg";
 function Footer() {
   const [mailValue, setMailValue] = useState("");
   return (
-    <div className="bg-black h-32 text-white flex px-24 justify-between">
+    <div className="bg-black py-10 text-white flex px-24 justify-between">
       <div className="flex flex-col items-start space-y-5">
         <div>
           <span className="text-red-500 font-semibold px-2">/</span>
@@ -19,8 +19,9 @@ function Footer() {
           <img className="w-3" src={Phone} alt="phone-logo" />
           <span>0187 167 6324</span>
         </div>
-        <div className="flex space-x-2 text-sm">
-          Multicomplesso La Spezia S.r.l - P.I. 01133410116 All Right Reserved
+        <div className="text-sm text-left">
+          <div>Multicomplesso La Spezia S.r.l - P.I. 01133410116</div>
+          <div>All Right Reserved</div>
         </div>
       </div>
 
@@ -40,11 +41,26 @@ function Footer() {
             />
           </div>
         </div>
+        <div className="text-xs break-words">
+          In qualità di Interessato, dichiaro di aver preso visione
+          dell‘informativa privacy redatta ai sensi dell’art. 13 del Regolamento
+          (UE) 2016/679 (GDPR).
+        </div>
+        <div className="flex items-center space-x-3">
+          <input id="consent" type="checkbox" value={false} />
+          <label htmlFor="consent">Acconsento</label>
+        </div>
+        <div className="bg-red-600 text-white p-1 font-semibold cursor-pointer">
+          Invia
+        </div>
       </div>
 
-      <div className="flex flex-col items-start space-y-5">
-        <span className="text-red-500 font-semibold px-2">/</span>
-        <span className="font-semibold">Instagram</span>
+      <div className="flex flex-col items-start text-xs space-y-5">
+        <div>
+          <span className="text-red-500 font-semibold px-2">/</span>
+          <span className="font-semibold">Instagram</span>
+        </div>
+        <div>instagram</div>
       </div>
     </div>
   );
