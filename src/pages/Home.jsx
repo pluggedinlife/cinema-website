@@ -1,5 +1,7 @@
+import { useState } from "react";
 import Carousel from "../components/Carousel";
 import MovieCard from "../components/MovieCard";
+import MovieRow from "../components/MovieRow";
 
 function Home() {
   const imgList = [
@@ -130,6 +132,9 @@ function Home() {
     },
   ];
 
+  const viewOptions = ["grid", "list"];
+  const [selectedOption, setSelectedOption] = useState("grid");
+
   return (
     <div className="flex flex-col ">
       <Carousel>
@@ -138,21 +143,59 @@ function Home() {
         })}
       </Carousel>
 
-      <div className="p-5 flex gap-5">
-        <div className="flex flex-wrap gap-5">
-          {moviesList.map((item, index) => (
-            <MovieCard key={index} data={item} />
-          ))}
-        </div>
-
-        <div className="flex flex-col space-y-5">
-          {advList.map((item, index) => (
-            <div key={index} className="border border-gray-300">
-              <img className="min-w-60" src={item.url} alt={item.altText} />
-            </div>
-          ))}
+      <div className="flex flex-col items-start px-4">
+        <label htmlFor="viewOptions" className="text-sm">
+          Select a view option
+        </label>
+        <div className="p-2">
+          <select
+            className="focus:outline-none"
+            name="viewOptions"
+            id="viewOptions"
+            onChange={(e) => setSelectedOption(e.target.value)}
+          >
+            {viewOptions.map((item, index) => {
+              return (
+                <option className="uppercase" key={index} value={item}>
+                  {item}
+                </option>
+              );
+            })}
+          </select>
         </div>
       </div>
+
+      {selectedOption === "grid" ? (
+        <div className="p-5 flex gap-5">
+          <div className="flex flex-wrap gap-5">
+            {moviesList.map((item, index) => (
+              <MovieCard key={index} data={item} />
+            ))}
+          </div>
+          <div className="flex flex-col space-y-5">
+            {advList.map((item, index) => (
+              <div key={index} className="border border-gray-300">
+                <img className="min-w-60" src={item.url} alt={item.altText} />
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="p-5 flex gap-5">
+          <div className="flex flex-1 flex-col gap-5">
+            {moviesList.map((item, index) => (
+              <MovieRow key={index} data={item} />
+            ))}
+          </div>
+          <div className="flex flex-col space-y-5">
+            {advList.map((item, index) => (
+              <div key={index} className="border border-gray-300">
+                <img className="w-60" src={item.url} alt={item.altText} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

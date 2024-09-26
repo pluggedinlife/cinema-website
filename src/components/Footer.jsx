@@ -1,19 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import LocationPinLogo from "../icons/location-pin.svg";
 import PhoneLogo from "../icons/phone.svg";
 import InstagramLogo from "../icons/instagram.svg";
 
 function Footer() {
   const [mailValue, setMailValue] = useState("");
-  let urlList = [];
-
-  useEffect(() => {
-    for (let i = 0; i < 6; i++) {
-      if (urlList.length < 6) {
-        urlList.push("https://picsum.photos/200");
-      }
-    }
-  });
 
   return (
     <div className="bg-black py-10 text-white px-24">
@@ -82,47 +73,41 @@ function Footer() {
             <span className="text-red-500 font-semibold px-2">/</span>
             <span className="font-semibold">Instagram</span>
           </div>
-          <div className="grid grid-rows-2 grid-cols-3 gap-2">
-            <img
-              className="h-14 w-14 cursor-pointer"
-              src="https://picsum.photos/200"
-              alt="img"
-            />
-
-            <img
-              className="h-14 w-14 cursor-pointer"
-              src="https://picsum.photos/200"
-              alt="img"
-            />
-
-            <img
-              className="h-14 w-14 cursor-pointer"
-              src="https://picsum.photos/200"
-              alt="img"
-            />
-
-            <img
-              className="h-14 w-14 cursor-pointer"
-              src="https://picsum.photos/200"
-              alt="img"
-            />
-
-            <img
-              className="h-14 w-14 cursor-pointer"
-              src="https://picsum.photos/200"
-              alt="img"
-            />
-
-            <img
-              className="h-14 w-14 cursor-pointer"
-              src="https://picsum.photos/200"
-              alt="img"
-            />
+          <div className="flex flex-col space-y-2 items-center">
+            <div className="grid grid-rows-2 grid-cols-3 gap-2">
+              {[...Array(6)].map((item, index) => {
+                return (
+                  <img
+                    key={index}
+                    className="h-14 w-14 cursor-pointer"
+                    src="https://picsum.photos/200"
+                    alt="img"
+                  />
+                );
+              })}
+            </div>
+            <div className="bg-red-600 text-white p-1 font-semibold cursor-pointer flex">
+              <img className="w-4" src={InstagramLogo} alt="phone-logo" />
+              <span>Seguici su Instagram</span>
+            </div>
           </div>
-          <div className="bg-red-600 text-white p-1 font-semibold cursor-pointer flex">
-            <img className="w-4" src={InstagramLogo} alt="phone-logo" />
-            <span>Seguici su Instagram</span>
-          </div>
+        </div>
+      </div>
+      <div className="border border-red-700 mt-4" />
+      <div className="p-4 text-white flex text-xs mt-4">
+        <div className="flex-1 flex items-start">
+          Privacy Policy - Cookie Policy | Created by TMedia Digital Srl
+        </div>
+        <div className="flex space-x-10">
+          <span className="uppercase hover:text-red-600 hover:underline font-semibold cursor-pointer">
+            facebook
+          </span>
+          <span className="uppercase hover:text-red-600 hover:underline font-semibold cursor-pointer">
+            twitter
+          </span>
+          <span className="uppercase hover:text-red-600 hover:underline font-semibold cursor-pointer">
+            instagram
+          </span>
         </div>
       </div>
     </div>

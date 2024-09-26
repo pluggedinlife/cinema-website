@@ -4,7 +4,7 @@ import instagramIcon from "../icons/instagram.svg";
 
 function SocialSection() {
   return (
-    <div className="flex space-x-5">
+    <div className="flex space-x-5 px-10">
       <a
         className="transition ease-in-out  hover:bg-white p-1 rounded-md"
         href="https://twitter.com/MEGACINE_SPEZIA"
