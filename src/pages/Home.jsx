@@ -2,6 +2,7 @@ import { useState } from "react";
 import Carousel from "../components/Carousel";
 import MovieCard from "../components/MovieCard";
 import MovieRow from "../components/MovieRow";
+import AdvSection from "../components/AdvSection";
 
 function Home() {
   const imgList = [
@@ -188,11 +189,7 @@ function Home() {
             ))}
           </div>
           <div className="flex flex-col space-y-5">
-            {advList.map((item, index) => (
-              <div key={index} className="border border-gray-300">
-                <img className="w-60" src={item.url} alt={item.altText} />
-              </div>
-            ))}
+            <AdvSection items={advList} />
           </div>
         </div>
       )}
